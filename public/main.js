@@ -62,7 +62,7 @@ module.exports = "<nav class=\"navbar navbar-expand-sm navbar-dark bg-dark fixed
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card card-block\">\n  <img class=\"card-img-top\"[src]='product?.imgurl' alt=\"Card image cap\">\n  <div class=\"card-body\">\n    <h5 class=\"card-title\">\n       {{product?.title}}\n    </h5>\n    <h5 class=\"card-title pull-right\">\n      ${{product?.price}}\n    </h5>   \n    <p class=\"card-text\">{{product?.desc}}\n    <p class=\"card-text\">\n          <app-stars [rating]='product?.rating'></app-stars>\n    </p>\n    <p class=\"card-text\"><small class=\"text-muted\">Last updated 3 mins ago</small></p>\n  </div>\n</div>\n<!-- <div class=\"card card-block\">\n  <div class=\"card-body\">\n    <button class=\"btn btn-defaut btn-lg pull-right\"\n      [class.active]=\"isWatched\"\n      (click)=\"watchProduct()\">\n      {{isWatched?'Not Watching':'Watching'}}\n    </button>\n    <label for=\"LastestPrice\">Lastest Price:${{currentBid |number : '.2-2'}}</label>\n  </div>\n</div> -->\n<div class=\"comments\">\n  <div>\n        <button class=\"btn btn-primary\" (click)=\"isHiddenComment=!isHiddenComment\">Add A Comment</button>\n  </div>\n  <div [hidden]=\"isHiddenComment\">\n    <br>\n    <div>\n      <app-stars [(rating)]=\"newRating\" [readonly]=\"false\"></app-stars>\n    </div>\n    <div>\n      <textarea [(ngModel)]=\"newComment\" class=\"form-control\" rows=\"3\" ></textarea>\n    </div>\n    <br>\n    <div>\n      <button class=\"btn btn-primary\" (click)=\"addComment()\">Submit</button>\n    </div>\n  </div>\n  <br> \n  <div class=\"row\" *ngFor=\"let comment of comments\" >\n    <hr>\n    <div class=\"col-md-12\">\n      <app-stars [rating]='comment.rating'></app-stars>\n      <p>{{comment.user}}</p>\n      <span class=\"pull-right\">{{comment.timestamp |   date:\"dd/MM/yyyy HH:mm:ss\"}}</span>\n      <p></p>\n      <p>{{comment.content}}</p>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card card-block\">\n  <img class=\"card-img-top\"[src]='product?.imgurl' alt=\"Card image cap\">\n  <div class=\"card-body\">\n    <h5 class=\"card-title\">\n       {{product?.title}}\n    </h5>\n    <h5 class=\"card-title pull-right\">\n      ${{product?.price}}\n    </h5>   \n    <p class=\"card-text\">{{product?.desc}}\n    <p class=\"card-text\">\n          <app-stars-rating  [rate]='product?.rating' [readonly]=\"true\"></app-stars-rating>\n    </p>\n    <p class=\"card-text\"><small class=\"text-muted\">Last updated 3 mins ago</small></p>\n  </div>\n</div>\n<!-- <div class=\"card card-block\">\n  <div class=\"card-body\">\n    <button class=\"btn btn-defaut btn-lg pull-right\"\n      [class.active]=\"isWatched\"\n      (click)=\"watchProduct()\">\n      {{isWatched?'Not Watching':'Watching'}}\n    </button>\n    <label for=\"LastestPrice\">Lastest Price:${{currentBid |number : '.2-2'}}</label>\n  </div>\n</div> -->\n<div class=\"comments\">\n  <div>\n        <button class=\"btn btn-primary\" (click)=\"isHiddenComment=!isHiddenComment\">Add A Comment</button>\n  </div>\n  <div [hidden]=\"isHiddenComment\">\n    <br>\n    <div>\n      <app-stars-rating  [(rate)]=\"newRating\" [readonly]=\"false\"></app-stars-rating>\n    </div>\n    <div>\n      <textarea [(ngModel)]=\"newComment\" class=\"form-control\" rows=\"3\" ></textarea>\n    </div>\n    <br>\n    <div>\n      <button class=\"btn btn-primary\" (click)=\"addComment()\">Submit</button>\n    </div>\n  </div>\n  <br> \n  <div class=\"row\" *ngFor=\"let comment of comments\" >\n    <hr>\n    <div class=\"col-md-12\">\n      <app-stars-rating [(rate)]='comment.rating'  [readonly]=\"true\"></app-stars-rating>\n      <p>{{comment.user}}</p>\n      <span class=\"pull-right\">{{comment.timestamp |   date:\"dd/MM/yyyy HH:mm:ss\"}}</span>\n      <p></p>\n      <p>{{comment.content}}</p>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -73,7 +73,7 @@ module.exports = "<div class=\"card card-block\">\n  <img class=\"card-img-top\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "    <!-- <div class=\"container\">\r\n        <div class=\"row equal\">\r\n            <div class=\"col-sm-4 d-flex pb-3\" *ngFor=\"let product of products |async\" >\r\n                <div class=\"card card-block\">\r\n                    <img class=\"card-img-top\" [src]=\"imgUrl\" alt=\"Card image cap\">\r\n                    <div class=\"card-body\">\r\n                      <h5 class=\"card-title\">\r\n                         <a [routerLink]=\"['/product',product.id]\">{{product.title}}</a>\r\n                      </h5>\r\n                      <p class=\"card-text \">${{product.price}}</p>\r\n                      <p class=\"card-text\">{{product.desc}}\r\n                      <p class=\"card-text\">\r\n                            <app-stars [rating]='product.rating'></app-stars>\r\n                      </p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            \r\n        </div>\r\n    </div> -->\r\n    <div class=\"row mb-5\">\r\n        <!-- Grid column -->\r\n        <div class=\"col-lg-4 col-md-12 mb-lg-0 mb-4 pb-3\" *ngFor=\"let product of products |async\" >\r\n          <!-- Card -->\r\n          <div class=\"card card-cascade wider card-ecommerce\">\r\n            <!-- Card image -->\r\n            <div class=\"view view-cascade overlay\">\r\n              <img [src]='product.imgurl' class=\"card-img-top\" alt=\"sample photo\">\r\n              <a [routerLink]=\"['/product',product.id]\">\r\n                <div class=\"mask rgba-white-slight waves-effect waves-light\"></div>\r\n              </a>\r\n            </div>\r\n            <!-- Card image -->\r\n            <!-- Card content -->\r\n            <div class=\"card-body card-body-cascade text-center\">\r\n              <!-- Category & Title -->\r\n              <a [routerLink]=\"['/product',product.id]\" class=\"text-muted\">\r\n                <h5>{{product.categories}}</h5>\r\n              </a>\r\n              <h4 class=\"card-title\">\r\n                <strong>\r\n                    <a [routerLink]=\"['/product',product.id]\">{{product.title}}</a>\r\n                </strong>\r\n              </h4>\r\n              <!-- Description -->\r\n              <p class=\"card-text\">\r\n                    <app-stars [rating]='product.rating'></app-stars>\r\n              </p>\r\n              <p class=\"card-text\">{{product.desc}}</p>\r\n              <!-- Card footer -->\r\n              <div class=\"card-footer px-1\">\r\n                <span class=\"float-left font-weight-bold\">\r\n                  <strong>{{product.price}}$</strong>\r\n                </span>\r\n                \r\n              </div>\r\n            </div>\r\n            <!-- Card content -->\r\n          </div>\r\n          <!-- Card -->\r\n        </div>\r\n        <!-- Grid column -->\r\n      </div>"
+module.exports = "    <!-- <div class=\"container\">\r\n        <div class=\"row equal\">\r\n            <div class=\"col-sm-4 d-flex pb-3\" *ngFor=\"let product of products |async\" >\r\n                <div class=\"card card-block\">\r\n                    <img class=\"card-img-top\" [src]=\"imgUrl\" alt=\"Card image cap\">\r\n                    <div class=\"card-body\">\r\n                      <h5 class=\"card-title\">\r\n                         <a [routerLink]=\"['/product',product.id]\">{{product.title}}</a>\r\n                      </h5>\r\n                      <p class=\"card-text \">${{product.price}}</p>\r\n                      <p class=\"card-text\">{{product.desc}}\r\n                      <p class=\"card-text\">\r\n                            <app-stars [rating]='product.rating'></app-stars>\r\n                      </p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            \r\n        </div>\r\n    </div> -->\r\n    <div class=\"row mb-5\">\r\n        <!-- Grid column -->\r\n        <div class=\"col-lg-4 col-md-12 mb-lg-0 mb-4 pb-3\" *ngFor=\"let product of products |async\" >\r\n          <!-- Card -->\r\n          <div class=\"card card-cascade wider card-ecommerce\">\r\n            <!-- Card image -->\r\n            <div class=\"view view-cascade overlay\">\r\n              <img [src]='product.imgurl' class=\"card-img-top\" alt=\"sample photo\">\r\n              <a [routerLink]=\"['/product',product.id]\">\r\n                <div class=\"mask rgba-white-slight waves-effect waves-light\"></div>\r\n              </a>\r\n            </div>\r\n            <!-- Card image -->\r\n            <!-- Card content -->\r\n            <div class=\"card-body card-body-cascade text-center\">\r\n              <!-- Category & Title -->\r\n              <a [routerLink]=\"['/product',product.id]\" class=\"text-muted\">\r\n                <h5>{{product.categories}}</h5>\r\n              </a>\r\n              <h4 class=\"card-title\">\r\n                <strong>\r\n                    <a [routerLink]=\"['/product',product.id]\">{{product.title}}</a>\r\n                </strong>\r\n              </h4>\r\n              <!-- Description -->\r\n              <p class=\"card-text\">\r\n                    <app-stars-rating [rate]='product.rating' [readonly]=\"true\"></app-stars-rating>\r\n              </p>\r\n              <p class=\"card-text\">{{product.desc}}</p>\r\n              <!-- Card footer -->\r\n              <div class=\"card-footer px-1\">\r\n                <span class=\"float-left font-weight-bold\">\r\n                  <strong>{{product.price}}$</strong>\r\n                </span>\r\n                \r\n              </div>\r\n            </div>\r\n            <!-- Card content -->\r\n          </div>\r\n          <!-- Card -->\r\n        </div>\r\n        <!-- Grid column -->\r\n      </div>"
 
 /***/ }),
 
@@ -88,14 +88,14 @@ module.exports = "<form [formGroup]=\"formModel\" (ngSubmit)=\"onSearch()\" >\r\
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/stars/stars.component.html":
-/*!**********************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/stars/stars.component.html ***!
-  \**********************************************************************/
+/***/ "./node_modules/raw-loader/index.js!./src/app/stars-rating/stars-rating.component.html":
+/*!************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/stars-rating/stars-rating.component.html ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n<span *ngFor=\"let star of stars;let i = index;\" class=\"fa fa-star\"\n[class.checked]=\"!star\" (click)=\"clickStar(i)\"></span>\n<span> {{rating|number:'1.0-2'}} stars</span>"
+module.exports = "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n<ng-template #t let-fill=\"fill\">\n  <span class=\"star\" [class.full]=\"fill === 100\">\n    <span class=\"half\" [style.width.%]=\"fill\"><span  class=\"fa fa-star\"></span></span><span  class=\"fa fa-star\"></span>\n  </span>\n</ng-template>\n\n<ng-template ngFor [ngForOf]=\"contexts\" let-index=\"index\">\n  <span class=\"sr-only\">({{ index < nextRate ? '*' : ' ' }})</span>\n  <span (mouseenter)=\"enter(index + 1)\" (click)=\"handleClick(index + 1)\" [style.cursor]=\"readonly || disabled ? 'default' : 'pointer'\">\n    <ng-template [ngTemplateOutlet]=\"starTemplate || starTemplateFromContent || t\" [ngTemplateOutletContext]=\"contexts[index]\">\n    </ng-template>\n  </span>\n</ng-template>\n\n<span> {{rate|number:'1.0-1'}} stars</span>"
 
 /***/ }),
 
@@ -182,7 +182,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _stars_stars_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stars/stars.component */ "./src/app/stars/stars.component.ts");
+/* harmony import */ var _stars_rating_stars_rating_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stars-rating/stars-rating.component */ "./src/app/stars-rating/stars-rating.component.ts");
 /* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
 /* harmony import */ var _search_search_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./search/search.component */ "./src/app/search/search.component.ts");
 /* harmony import */ var _carousel_carousel_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./carousel/carousel.component */ "./src/app/carousel/carousel.component.ts");
@@ -230,7 +230,6 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
-                _stars_stars_component__WEBPACK_IMPORTED_MODULE_3__["StarsComponent"],
                 _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_4__["NavbarComponent"],
                 _search_search_component__WEBPACK_IMPORTED_MODULE_5__["SearchComponent"],
                 _carousel_carousel_component__WEBPACK_IMPORTED_MODULE_6__["CarouselComponent"],
@@ -238,7 +237,8 @@ var AppModule = /** @class */ (function () {
                 _product_product_component__WEBPACK_IMPORTED_MODULE_8__["ProductComponent"],
                 _product_detail_product_detail_component__WEBPACK_IMPORTED_MODULE_9__["ProductDetailComponent"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
-                _pipe_filter_pipe__WEBPACK_IMPORTED_MODULE_13__["FilterPipe"]
+                _pipe_filter_pipe__WEBPACK_IMPORTED_MODULE_13__["FilterPipe"],
+                _stars_rating_stars_rating_component__WEBPACK_IMPORTED_MODULE_3__["StarsRatingComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -532,7 +532,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _service_product_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../service/product.service */ "./src/app/service/product.service.ts");
-/* harmony import */ var _service_web_socket_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/web-socket.service */ "./src/app/service/web-socket.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -545,23 +544,25 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
+// import { WebSocketService } from '../service/web-socket.service';
+// import { Subscription } from '../../../node_modules/rxjs';
 var ProductDetailComponent = /** @class */ (function () {
-    function ProductDetailComponent(routeInfo, productService, wsService) {
+    // isWatched:boolean=false;
+    // currentBid:number;
+    // subscrption:Subscription;
+    function ProductDetailComponent(routeInfo, productService) {
         this.routeInfo = routeInfo;
         this.productService = productService;
-        this.wsService = wsService;
         this.newRating = 5;
         this.newComment = "";
         this.isHiddenComment = true;
-        this.isWatched = false;
     }
     ProductDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         var productId = this.routeInfo.snapshot.params["productId"];
         this.productService.getProduct(productId).subscribe(function (product) {
             _this.product = product;
-            _this.currentBid = product.price;
+            // this.currentBid=product.price;
         });
         this.productService.getCommentForProductID(productId).subscribe(function (comments) { return _this.comments = comments; });
     };
@@ -570,25 +571,8 @@ var ProductDetailComponent = /** @class */ (function () {
         this.comments.unshift(comment);
         var sum = this.comments.reduce(function (sum, comment) { return sum + comment.rating; }, 0);
         this.product.rating = sum / this.comments.length;
-        this.newRating = 5;
         this.newComment = null;
         this.isHiddenComment = true;
-    };
-    ProductDetailComponent.prototype.watchProduct = function () {
-        var _this = this;
-        if (this.subscrption) {
-            this.subscrption.unsubscribe();
-            this.isWatched = false;
-            this.subscrption = null;
-        }
-        else {
-            this.isWatched = true;
-            this.subscrption = this.wsService.createObservableSocket("ws://localhost:8085", this.product.id)
-                .subscribe(function (products) {
-                var product = JSON.parse(products).find(function (p) { return p.productId === _this.product.id; });
-                _this.currentBid = product.bid;
-            });
-        }
     };
     ProductDetailComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -597,8 +581,7 @@ var ProductDetailComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./product-detail.component.css */ "./src/app/product-detail/product-detail.component.css")]
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
-            _service_product_service__WEBPACK_IMPORTED_MODULE_2__["ProductService"],
-            _service_web_socket_service__WEBPACK_IMPORTED_MODULE_3__["WebSocketService"]])
+            _service_product_service__WEBPACK_IMPORTED_MODULE_2__["ProductService"]])
     ], ProductDetailComponent);
     return ProductDetailComponent;
 }());
@@ -950,28 +933,29 @@ var WebSocketService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/stars/stars.component.css":
-/*!*******************************************!*\
-  !*** ./src/app/stars/stars.component.css ***!
-  \*******************************************/
+/***/ "./src/app/stars-rating/stars-rating.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/stars-rating/stars-rating.component.css ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".checked {\r\n    color: orange;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RhcnMvc3RhcnMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7QUFDakIiLCJmaWxlIjoic3JjL2FwcC9zdGFycy9zdGFycy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNoZWNrZWQge1xyXG4gICAgY29sb3I6IG9yYW5nZTtcclxufSJdfQ== */"
+module.exports = ".star {\r\n    position: relative;\r\n    display: inline-block;\r\n    font-size: 1rem;\r\n    color: #d3d3d3;\r\n}\r\n.full {\r\n    color: orange;\r\n}\r\n.half {\r\n    position: absolute;\r\n    display: inline-block;\r\n    overflow: hidden;\r\n    color: orange;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RhcnMtcmF0aW5nL3N0YXJzLXJhdGluZy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksa0JBQWtCO0lBQ2xCLHFCQUFxQjtJQUNyQixlQUFlO0lBQ2YsY0FBYztBQUNsQjtBQUNBO0lBQ0ksYUFBYTtBQUNqQjtBQUNBO0lBQ0ksa0JBQWtCO0lBQ2xCLHFCQUFxQjtJQUNyQixnQkFBZ0I7SUFDaEIsYUFBYTtBQUNqQiIsImZpbGUiOiJzcmMvYXBwL3N0YXJzLXJhdGluZy9zdGFycy1yYXRpbmcuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zdGFyIHtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICAgIGZvbnQtc2l6ZTogMXJlbTtcclxuICAgIGNvbG9yOiAjZDNkM2QzO1xyXG59XHJcbi5mdWxsIHtcclxuICAgIGNvbG9yOiBvcmFuZ2U7XHJcbn1cclxuLmhhbGYge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICAgIGNvbG9yOiBvcmFuZ2U7XHJcbn0iXX0= */"
 
 /***/ }),
 
-/***/ "./src/app/stars/stars.component.ts":
-/*!******************************************!*\
-  !*** ./src/app/stars/stars.component.ts ***!
-  \******************************************/
-/*! exports provided: StarsComponent */
+/***/ "./src/app/stars-rating/stars-rating.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/stars-rating/stars-rating.component.ts ***!
+  \********************************************************/
+/*! exports provided: StarsRatingComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StarsComponent", function() { return StarsComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StarsRatingComponent", function() { return StarsRatingComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -982,47 +966,163 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var StarsComponent = /** @class */ (function () {
-    function StarsComponent() {
-        this.rating = 0;
-        this.ratingChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.readonly = true;
+
+var NGB_RATING_VALUE_ACCESSOR = {
+    provide: _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NG_VALUE_ACCESSOR"],
+    useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(function () { return StarsRatingComponent; }),
+    multi: true
+};
+/**
+ * A directive that helps visualising and interacting with a star rating bar.
+ */
+var StarsRatingComponent = /** @class */ (function () {
+    function StarsRatingComponent(_changeDetectorRef) {
+        this._changeDetectorRef = _changeDetectorRef;
+        this.contexts = [];
+        this.disabled = false;
+        /**
+         * An event emitted when the user is hovering over a given rating.
+         *
+         * Event payload equals to the rating being hovered over.
+         */
+        this.hover = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * An event emitted when the user stops hovering over a given rating.
+         *
+         * Event payload equals to the rating of the last item being hovered over.
+         */
+        this.leave = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * An event emitted when the user selects a new rating.
+         *
+         * Event payload equals to the newly selected rating.
+         */
+        this.rateChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](true);
+        this.onChange = function (_) { };
+        this.onTouched = function () { };
+        this.max = 5;
+        this.readonly = false;
     }
-    StarsComponent.prototype.ngOnInit = function () {
+    StarsRatingComponent.prototype.ariaValueText = function () { return this.nextRate + " out of " + this.max; };
+    StarsRatingComponent.prototype.getValueInRange = function (value, max, min) {
+        if (min === void 0) { min = 0; }
+        return Math.max(Math.min(value, max), min);
     };
-    StarsComponent.prototype.ngOnChanges = function (changes) {
-        this.stars = [];
-        for (var i = 1; i <= 5; i++) {
-            this.stars.push(i > this.rating);
+    StarsRatingComponent.prototype.enter = function (value) {
+        if (!this.readonly && !this.disabled) {
+            this._updateState(value);
+        }
+        this.hover.emit(value);
+    };
+    StarsRatingComponent.prototype.handleBlur = function () { this.onTouched(); };
+    StarsRatingComponent.prototype.handleClick = function (value) { this.update(this.resettable && this.rate === value ? 0 : value); };
+    StarsRatingComponent.prototype.ngOnChanges = function (changes) {
+        if (changes['rate']) {
+            this.update(this.rate);
         }
     };
-    StarsComponent.prototype.clickStar = function (index) {
-        if (!this.readonly) {
-            this.rating = index + 1;
-            this.ratingChange.emit(this.rating);
+    StarsRatingComponent.prototype.ngOnInit = function () {
+        this.contexts = Array.from({ length: this.max }, function (v, k) { return ({ fill: 0, index: k }); });
+        this._updateState(this.rate);
+    };
+    StarsRatingComponent.prototype.registerOnChange = function (fn) { this.onChange = fn; };
+    StarsRatingComponent.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
+    StarsRatingComponent.prototype.reset = function () {
+        this.leave.emit(this.nextRate);
+        this._updateState(this.rate);
+    };
+    StarsRatingComponent.prototype.setDisabledState = function (isDisabled) { this.disabled = isDisabled; };
+    StarsRatingComponent.prototype.update = function (value, internalChange) {
+        if (internalChange === void 0) { internalChange = true; }
+        var newRate = this.getValueInRange(value, this.max, 0);
+        if (!this.readonly && !this.disabled && this.rate !== newRate) {
+            this.rate = newRate;
+            this.rateChange.emit(this.rate);
         }
+        if (internalChange) {
+            this.onChange(this.rate);
+            this.onTouched();
+        }
+        this._updateState(this.rate);
+    };
+    StarsRatingComponent.prototype.writeValue = function (value) {
+        this.update(value, false);
+        this._changeDetectorRef.markForCheck();
+    };
+    StarsRatingComponent.prototype._getFillValue = function (index) {
+        var diff = this.nextRate - index;
+        if (diff >= 1) {
+            return 100;
+        }
+        if (diff < 1 && diff > 0) {
+            return parseInt((diff * 100).toFixed(2), 10);
+        }
+        return 0;
+    };
+    StarsRatingComponent.prototype._updateState = function (nextValue) {
+        var _this = this;
+        this.nextRate = nextValue;
+        this.contexts.forEach(function (context, index) { return context.fill = _this._getFillValue(index); });
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Number)
-    ], StarsComponent.prototype, "rating", void 0);
+    ], StarsRatingComponent.prototype, "max", void 0);
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
-    ], StarsComponent.prototype, "ratingChange", void 0);
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], StarsRatingComponent.prototype, "rate", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Boolean)
-    ], StarsComponent.prototype, "readonly", void 0);
-    StarsComponent = __decorate([
+    ], StarsRatingComponent.prototype, "readonly", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], StarsRatingComponent.prototype, "resettable", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"])
+    ], StarsRatingComponent.prototype, "starTemplate", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"], { static: false }),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"])
+    ], StarsRatingComponent.prototype, "starTemplateFromContent", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], StarsRatingComponent.prototype, "hover", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], StarsRatingComponent.prototype, "leave", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], StarsRatingComponent.prototype, "rateChange", void 0);
+    StarsRatingComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-stars',
-            template: __webpack_require__(/*! raw-loader!./stars.component.html */ "./node_modules/raw-loader/index.js!./src/app/stars/stars.component.html"),
-            styles: [__webpack_require__(/*! ./stars.component.css */ "./src/app/stars/stars.component.css")]
+            selector: 'app-stars-rating',
+            changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+            host: {
+                'class': 'd-inline-flex',
+                'tabindex': '0',
+                'role': 'slider',
+                'aria-valuemin': '0',
+                '[attr.aria-valuemax]': 'max',
+                '[attr.aria-valuenow]': 'nextRate',
+                '[attr.aria-valuetext]': 'ariaValueText()',
+                '[attr.aria-disabled]': 'readonly ? true : null',
+                '(blur)': 'handleBlur()',
+                '(mouseleave)': 'reset()'
+            },
+            template: __webpack_require__(/*! raw-loader!./stars-rating.component.html */ "./node_modules/raw-loader/index.js!./src/app/stars-rating/stars-rating.component.html"),
+            providers: [NGB_RATING_VALUE_ACCESSOR],
+            styles: [__webpack_require__(/*! ./stars-rating.component.css */ "./src/app/stars-rating/stars-rating.component.css")]
         }),
-        __metadata("design:paramtypes", [])
-    ], StarsComponent);
-    return StarsComponent;
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
+    ], StarsRatingComponent);
+    return StarsRatingComponent;
 }());
 
 
